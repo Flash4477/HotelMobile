@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # hotel_des
 
 A new Flutter project.
@@ -14,3 +15,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# HotelMobile
+>>>>>>> 24a9f1cb531b38a2be920f287697b617bb24498e
