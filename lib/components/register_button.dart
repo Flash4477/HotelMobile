@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class RegisterButton extends StatelessWidget {
-  final Function()? onTap;
+  final VoidCallback onTap;
 
-  const RegisterButton({super.key, required this.onTap});
+  const RegisterButton({required this.onTap, super.key});
 
   @override
   Widget build(BuildContext context) {

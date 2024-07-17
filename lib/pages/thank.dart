@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_des/Homepage/HomePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,13 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SuccessPage(),
+      home: ThankPage(),
     );
   }
 }
 
-class SuccessPage extends StatelessWidget {
-  const SuccessPage({super.key});
+class ThankPage extends StatelessWidget {
+  const ThankPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +60,12 @@ class SuccessPage extends StatelessWidget {
             SizedBox(height: 32),
             GestureDetector(
               onTap: () {
-                // Xử lý sự kiện khi nhấn nút
-                Navigator.of(context).pop();
-              },
+                  Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                },
               child: Container(
                 height: 50,
                 width: double.infinity,
@@ -85,22 +89,7 @@ class SuccessPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Account',
-          ),
-        ],
-      ),
+      
     );
   }
 }

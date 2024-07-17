@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_des/onboarding/onboarding_2.dart';
 
 class Onboarding1Widget extends StatefulWidget {
   const Onboarding1Widget({super.key});
@@ -40,21 +41,22 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                  padding: const EdgeInsets.only(top: 20.0, bottom: 0.0, left: 30.0, right: 30.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text(
-                        'Bỏ Qua',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
+                padding: const EdgeInsets.only(
+                    top: 20.0, bottom: 0.0, left: 30.0, right: 30.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    Text(
+                      'Bỏ Qua',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
+              ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
-                  'acess/2.png',
+                  'acess/2.png', // Chỉnh lại đường dẫn
                   width: 444,
                   height: 400,
                   fit: BoxFit.cover,
@@ -81,7 +83,12 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget> {
               Flexible(
                 child: ElevatedButton(
                   onPressed: () {
-                    print('Button pressed ...');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Onboarding2Widget(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF393939),
@@ -95,7 +102,10 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget> {
                     ),
                     elevation: 3,
                   ),
-                  child: Text(style: TextStyle(color: Colors.white),'Tiếp Tục'),
+                  child: const Text(
+                    style: TextStyle(color: Colors.white),
+                    'Tiếp Tục',
+                  ),
                 ),
               ),
             ],
