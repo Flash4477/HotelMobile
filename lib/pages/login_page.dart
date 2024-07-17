@@ -3,6 +3,8 @@ import 'package:hotel_des/components/square_tile.dart';
 import 'package:hotel_des/components/my_button.dart';
 import 'package:hotel_des/components/my_textfield.dart';
 import 'package:hotel_des/pages/register_page.dart';
+import 'package:hotel_des/Homepage/HomePage.dart';
+import 'fogotpass_page.dart'; // Import ForgotPasswordScreen
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -13,7 +15,12 @@ class LoginPage extends StatelessWidget {
 
   // sign user in method
   void signUserIn(BuildContext context) {
-    Navigator.pushNamed(context, '/login');
+     Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
+                    ),
+                  );
   }
 
   @override
@@ -86,34 +93,48 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 30),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 0.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        'Quên Mật Khẩu?',
-                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ForgotPasswordScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Quên Mật Khẩu?',
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 10,),
                 Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    'Không Có Tài Khoản?',
-                    
-                  ),
-                  SizedBox(width: 4),
-                  Text(
-                    'Đăng Kí Ngay',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      fontWeight: FontWeight.bold,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Không Có Tài Khoản?',
                     ),
-                  ),
-                ],
-              )
+                    const SizedBox(width: 4),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RegisterPage(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Đăng Kí Ngay',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),

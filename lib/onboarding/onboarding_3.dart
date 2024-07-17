@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'onboarding_4.dart';
 
 class Onboarding3Widget extends StatefulWidget {
   const Onboarding3Widget({super.key});
@@ -68,8 +69,13 @@ class _Onboarding3WidgetState extends State<Onboarding3Widget> {
               const SizedBox(height: 200),
               Flexible(
                 child: ElevatedButton(
-                  onPressed: () {
-                    print('Button pressed ...');
+                   onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Onboarding4Widget(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF393939),

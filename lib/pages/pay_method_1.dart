@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'add_payment.dart';
 void main() {
   runApp(MyApp());
 }
@@ -40,7 +40,7 @@ class PaymentPage extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Image.asset(
-              'assets/background.png', // Đảm bảo đường dẫn hình ảnh chính xác
+              'acess/backgroud.png', // Đảm bảo đường dẫn hình ảnh chính xác
               width: 377,
               height: 100,
               fit: BoxFit.cover,
@@ -130,52 +130,56 @@ class PaymentPage extends StatelessWidget {
   }
 
   void _showPaymentDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Center(child: Text('Hình Thức Thanh Toán')),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  minimumSize: Size(double.infinity, 50),
-                ),
-                onPressed: () {
-                  // Xử lý thêm phương thức thanh toán
-                  Navigator.of(context).pop();
-                },
-                child: Text('THÊM PHƯƠNG THỨC THANH TOÁN'),
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Center(child: Text('Hình Thức Thanh Toán')),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                minimumSize: Size(double.infinity, 50),
               ),
-              SizedBox(height: 10),
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
-                  side: BorderSide(color: Colors.black),
-                ),
-                onPressed: () {
-                  // Xử lý trả khi nhận phòng
-                  Navigator.of(context).pop();
-                },
-                child: Text('TRẢ KHI NHẬN PHÒNG'),
-              ),
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Đóng dialog
+                // Chuyển sang màn hình AddPayment khi nhấn vào nút THÊM PHƯƠNG THỨC THANH TOÁN
+                Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddPayment()),
+                );
               },
-              child: Text('Đóng'),
+              child: Text('THÊM PHƯƠNG THỨC THANH TOÁN'),
+            ),
+            SizedBox(height: 10),
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                minimumSize: Size(double.infinity, 50),
+                side: BorderSide(color: Colors.black),
+              ),
+              onPressed: () {
+                // Xử lý trả khi nhận phòng
+                Navigator.of(context).pop();
+              },
+              child: Text('TRẢ KHI NHẬN PHÒNG'),
             ),
           ],
-        );
-      },
-    );
-  }
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Đóng dialog
+            },
+            child: Text('Đóng'),
+          ),
+        ],
+      );
+    },
+  );
+}
 }

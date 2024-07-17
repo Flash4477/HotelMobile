@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_des/components/my_textfield.dart';
-
-
+import 'package:hotel_des/pages/login_page.dart';
 class NewpassPage extends StatelessWidget {
   NewpassPage({super.key});
 
@@ -11,10 +10,7 @@ class NewpassPage extends StatelessWidget {
   final passwordConfimController = TextEditingController();
 
   // sign user in method
-  void registerUserIn() {
-    
-    //  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(),));
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +22,11 @@ class NewpassPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 1),
-
-             Image.asset(
-                  'acess/logo.png',
-                  width: 168,
-                  height: 181,
-                ),
-              
-             
-
+              Image.asset(
+                'acess/logo.png',
+                width: 168,
+                height: 181,
+              ),
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -75,31 +67,38 @@ class NewpassPage extends StatelessWidget {
                 hintText: 'Nhập Lại Mật Khẩu',
                 obscureText: true,
               ),
-             const SizedBox(height: 10),
-          
-
+              const SizedBox(height: 10),
               const SizedBox(height: 40),
-               Container(
-        height: 65,
-        width: 328,
-        padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.symmetric(horizontal: 25),
-        decoration: BoxDecoration(
-          color: const Color.fromRGBO(57, 57, 57, 20),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: const Center(
-          child: Text(
-            "Đổi Mật Khẩu",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-          ),
-        ),
-      ),
-              
+              GestureDetector(
+                onTap: () {
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>  LoginPage(),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 65,
+                  width: 328,
+                  padding: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.symmetric(horizontal: 25),
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(57, 57, 57, 20),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Đổi Mật Khẩu",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               const SizedBox(height: 50),
             ],
           ),
