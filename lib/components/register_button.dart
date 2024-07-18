@@ -25,6 +25,7 @@ class RegisterButton extends StatelessWidget {
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 18,
+              
             ),
           ),
         ),

@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+    
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -39,6 +40,8 @@ dependencies:
   awesome_dialog: ^3.2.1
   provider: ^6.1.2
   google_fonts: ^6.2.1
+  carousel_slider: ^4.2.1
+  expandable_text: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -67,13 +70,24 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - acess/
+    #- acess/
      
     # - acess/apple.png
     # - acess/google.png
     # - acess/hai.png
     # - acess/img_fb.png
-    # - acess/logo.png
+     - acess/image/
+    #- assets/vungtau.png
+    #- assets/danang.png
+    #- assets/hue.png
+    #- assets/hochiminh.png
+    #- assets/hanoi.png
+
+
+
+
+
+
 
 
   
