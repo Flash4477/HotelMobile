@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-
+import 'package:hotel_des/pages/DetailPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -67,31 +66,31 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
-            
-            children: <Widget>[
-              
-              Image.asset(
-                  'acess/backgroud.png',height: 200, width: double.infinity,fit: BoxFit.cover,
+              children: <Widget>[
+                Image.asset(
+                  'acess/backgroud.png',
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
-              Positioned.fill(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                  'Tìm nơi nghỉ dưỡng phù hợp\n cho bạn',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                            ),
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Tìm nơi nghỉ dưỡng phù hợp\n cho bạn',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
                       ),
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
             _buildSearchCard(context),
             _buildSuggestedDestinations(),
           ],
@@ -233,7 +232,7 @@ class _HomePageState extends State<HomePage> {
       thickness: 1,
     );
   }
-  
+
   Widget _buildSuggestedDestinations() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -253,9 +252,23 @@ class _HomePageState extends State<HomePage> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                _buildDestinationCard1('Beach Resort Lux', 'Waikiki, 4.1 miles from center', 'Ocean View 1 king Bed\nNo prepayment', '\$720', 4.5),
+                _buildDestinationCard1(
+                  'Beach Resort Lux',
+                  'Waikiki, 4.1 miles from center',
+                  'Ocean View 1 king Bed\nNo prepayment',
+                  '\$720',
+                  4.5,
+                  ['acess/logo.png', 'acess/logo.png'],
+                ),
                 const SizedBox(width: 16),
-                _buildDestinationCard2('Hotel Standard', 'San Francisco, 1.2 miles from center', 'Standard Room\nFree cancellation', '\$650', 4.0),
+                _buildDestinationCard2(
+                  'Hotel Standard',
+                  'San Francisco, 1.2 miles from center',
+                  'Standard Room\nFree cancellation',
+                  '\$650',
+                  4.0,
+                  ['acess/logo.png', 'acess/logo.png'],
+                ),
               ],
             ),
           ),
@@ -264,85 +277,105 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildDestinationCard1(String title, String location, String details, String price, double rating) {
-    return Card(
-      child: Container(
-        width: 250,
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Image.network('https://via.placeholder.com/150', fit: BoxFit.cover),
-            Image.asset('acess/logo.png'),
-            const SizedBox(height: 8),
-            Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
-            Text(location, style: TextStyle(color: Colors.grey)),
-            const SizedBox(height: 8),
-            Text(details, style: TextStyle(color: Colors.grey)),
-            const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(price, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                Row(
-                  children: [
-                    Icon(Icons.star, color: Colors.amber, size: 16),
-                    Text(rating.toString(), style: TextStyle(color: Colors.amber)),
-                  ],
-                ),
-              ],
+  Widget _buildDestinationCard1(String title, String location, String details, String price, double rating, List<String> imagePaths) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailPage(
+              title: title,
+              description: details,
+              imagePaths: imagePaths,
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-Widget _buildDestinationCard2(String title, String location, String details, String price, double rating) {
-    return Card(
-      child: Container(
-        width: 250,
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Image.network('https://via.placeholder.com/150', fit: BoxFit.cover),
-            Image.asset('acess/logo.png'),
-            const SizedBox(height: 8),
-            Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
-            Text(location, style: TextStyle(color: Colors.grey)),
-            const SizedBox(height: 8),
-            Text(details, style: TextStyle(color: Colors.grey)),
-            const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(price, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                Row(
-                  children: [
-                    Icon(Icons.star, color: Colors.amber, size: 16),
-                    Text(rating.toString(), style: TextStyle(color: Colors.amber)),
-                  ],
-                ),
-              ],
-            ),
-          ],
+          ),
+        );
+      },
+      child: Card(
+        child: Container(
+          width: 250,
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset('acess/logo.png'),
+              const SizedBox(height: 8),
+              Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 8),
+              Text(location, style: TextStyle(color: Colors.grey)),
+              const SizedBox(height: 8),
+              Text(details, style: TextStyle(color: Colors.grey)),
+              const SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(price, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Row(
+                    children: [
+                      Icon(Icons.star, color: Colors.amber, size: 16),
+                      Text(rating.toString(), style: TextStyle(color: Colors.amber)),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-class DurationPickerPage extends StatefulWidget {
+  Widget _buildDestinationCard2(String title, String location, String details, String price, double rating, List<String> imagePaths) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailPage(
+              title: title,
+              description: details,
+              imagePaths: imagePaths,
+            ),
+          ),
+        );
+      },
+      child: Card(
+        child: Container(
+          width: 250,
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset('acess/logo.png'),
+              const SizedBox(height: 8),
+              Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 8),
+              Text(location, style: TextStyle(color: Colors.grey)),
+              const SizedBox(height: 8),
+              Text(details, style: TextStyle(color: Colors.grey)),
+              const SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(price, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Row(
+                    children: [
+                      Icon(Icons.star, color: Colors.amber, size: 16),
+                      Text(rating.toString(), style: TextStyle(color: Colors.amber)),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class DurationPickerPage extends StatelessWidget {
   const DurationPickerPage({super.key});
-
-  @override
-  _DurationPickerPageState createState() => _DurationPickerPageState();
-}
-
-class _DurationPickerPageState extends State<DurationPickerPage> {
-  int _nights = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -350,110 +383,33 @@ class _DurationPickerPageState extends State<DurationPickerPage> {
       appBar: AppBar(
         title: Text('Chọn Số Đêm'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            for (int i = 1; i <= 6; i++)
-              ListTile(
-                title: Text('$i Đêm'),
-                onTap: () {
-                  setState(() {
-                    _nights = i;
-                  });
-                },
-                trailing: _nights == i ? Icon(Icons.check, color: Colors.blue) : null,
-              ),
-            Spacer(),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context, {'nights': _nights});
-              },
-              child: Text('Lưu'),
-            ),
-          ],
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context, {'nights': 3});
+          },
+          child: Text('3 Đêm'),
         ),
       ),
     );
   }
 }
 
-class GuestPickerPage extends StatefulWidget {
+class GuestPickerPage extends StatelessWidget {
   const GuestPickerPage({super.key});
-
-  @override
-  _GuestPickerPageState createState() => _GuestPickerPageState();
-}
-
-class _GuestPickerPageState extends State<GuestPickerPage> {
-  int _guests = 1;
-  int _beds = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Số Lượng Khách'),
+        title: Text('Chọn Số Khách Và Giường'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Khách', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      if (_guests > 1) _guests--;
-                    });
-                  },
-                  icon: Icon(Icons.remove),
-                ),
-                Text('$_guests', style: TextStyle(fontSize: 18)),
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _guests++;
-                    });
-                  },
-                  icon: Icon(Icons.add),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Text('Giường', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      if (_beds > 1) _beds--;
-                    });
-                  },
-                  icon: Icon(Icons.remove),
-                ),
-                Text('$_beds', style: TextStyle(fontSize: 18)),
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _beds++;
-                    });
-                  },
-                  icon: Icon(Icons.add),
-                ),
-              ],
-            ),
-            Spacer(),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context, {'guests': _guests, 'beds': _beds});
-              },
-              child: Text('Save'),
-            ),
-          ],
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context, {'guests': 2, 'beds': 1});
+          },
+          child: Text('2 Khách, 1 Giường'),
         ),
       ),
     );
