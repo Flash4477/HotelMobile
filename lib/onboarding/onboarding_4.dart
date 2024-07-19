@@ -62,7 +62,7 @@ class _Onboarding4WidgetState extends State<Onboarding4Widget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const HomePage(),
+                      builder: (context) =>  HomePage(),
                     ),
                   );
                 },

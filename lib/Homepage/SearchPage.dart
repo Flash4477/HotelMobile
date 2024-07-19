@@ -1,9 +1,10 @@
 
 import 'package:flutter/material.dart';
-
-
+import '../pages/SearchDetailPage.dart';
 
 class SearchPage extends StatelessWidget {
+  const SearchPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,145 +13,135 @@ class SearchPage extends StatelessWidget {
         elevation: 0,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildSearchBar(),
-            _buildSuggestedDestinations(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildSearchBar(),
+              const SizedBox(height: 16),
+              _buildHeader(),
+              const SizedBox(height: 26),
+              _buildSuggestedDestinations(context),
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget _buildSearchBar() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: TextField(
-        decoration: InputDecoration(
-          prefixIcon: Icon(Icons.search),
-          hintText: 'Hochiminh City, Vietnam',
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
+    return Container(
+      height:60,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black),
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.grey[200],
+      ),
+      child: Center(
+        child: TextField(
+          style: TextStyle(fontSize: 16),
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.only(top: 12),
+            border: InputBorder.none,
+            // contentPadding: EdgeInsets.symmetric(horizontal: 20),
+            hintText: 'Search for a city, area, or a hotel',
+            prefixIcon: Icon(Icons.search),
+            // border: OutlineInputBorder(   
+            //   borderRadius: BorderRadius.circular(10),
+            // ),
+            
+            
+            
           ),
-          filled: true,
-          fillColor: Colors.grey[200],
         ),
       ),
     );
   }
-
-  Widget _buildSuggestedDestinations() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildDestinationCard(
-            imageUrl: 'https://via.placeholder.com/400x200',
-            title: 'Beach Resort Lux',
-            location: 'TP. Hồ Chí Minh',
-            price: '\$830',
-            rating: 4.8,
-            town: 'SAIGON TOWN',
-          ),
-          const SizedBox(height: 16),
-          _buildDestinationCard(
-            imageUrl: 'https://via.placeholder.com/400x200',
-            title: 'Lux Hotel',
-            location: 'TP. Hồ Chí Minh',
-            price: '\$830',
-            rating: 4.8,
-            town: 'Sóng Dữ Pear',
-          ),
-        ],
+  Widget _buildHeader() {
+    return Text(
+      'Gợi Ý Điểm Đến',
+      style: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
 
-  Widget _buildDestinationCard({
-    required String imageUrl,
-    required String title,
-    required String location,
-    required String price,
-    required double rating,
-    required String town,
-  }) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      elevation: 5,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-            child: Stack(
-              children: [
-                Image.network(imageUrl, width: double.infinity, height: 200, fit: BoxFit.cover),
-                Positioned(
-                  top: 8,
-                  left: 8,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      town,
-                      style: TextStyle(color: Colors.white),
+  Widget _buildSuggestedDestinations(BuildContext context) {
+    return Column(
+      children: [
+        _buildDestinationCard(context, 'Vũng Tàu', 'Discover new places and find new adventures.', 'assets/vungtau.png'),
+        const SizedBox(height: 16),
+        _buildDestinationCard(context, 'Đà Nẵng', 'Discover new places and find new adventures.', 'assets/danang.png'),
+        const SizedBox(height: 16),
+        _buildDestinationCard(context, 'Huế', 'Discover new places and find new adventures.', 'assets/hue.png'),
+        const SizedBox(height: 16),
+        _buildDestinationCard(context, 'Hồ Chí Minh', 'Discover new places and find new adventures.', 'assets/hochiminh.png'),
+        const SizedBox(height: 16),
+        _buildDestinationCard(context, 'Hà Nội', 'Discover new places and find new adventures.', 'assets/hanoi.png'),
+      ],
+    );
+  }
+
+  Widget _buildDestinationCard(BuildContext context, String title, String description, String imagePath) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SearchDetailPage()),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 5,
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 163,
+              height: 118,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                  image: AssetImage(imagePath),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: 8,
-                  right: 8,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(Icons.star, color: Colors.amber, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          rating.toString(),
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
+                  const SizedBox(height: 8),
+                  Text(
+                    description,
+                    style: TextStyle(
+                      color: Colors.grey,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  location,
-                  style: TextStyle(color: Colors.grey),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  title,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  price,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

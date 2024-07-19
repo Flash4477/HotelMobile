@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_des/botton_nav_with_animated_icons.dart';
 import 'package:hotel_des/components/square_tile.dart';
 import 'package:hotel_des/components/my_button.dart';
 import 'package:hotel_des/components/my_textfield.dart';
@@ -18,7 +19,7 @@ class LoginPage extends StatelessWidget {
      Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const HomePage(),
+                      builder: (context) =>  BottomNavWithAnimatedIcons(),
                     ),
                   );
   }

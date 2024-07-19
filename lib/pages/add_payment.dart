@@ -152,6 +152,7 @@ class _AddPaymentState extends State<AddPayment> {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey,
+                        foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -172,8 +173,10 @@ class _AddPaymentState extends State<AddPayment> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
+                        foregroundColor: const Color.fromARGB(255, 0, 0, 0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
+                          
                         ),
                       ),
                       child: Text('LƯU THẺ'),

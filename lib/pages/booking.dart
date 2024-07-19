@@ -28,8 +28,11 @@ class BookingPage extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text('Đặt Chỗ'),
+        
       ),
-      body: Padding(
+      body: 
+      Padding(
+       
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -103,7 +106,7 @@ class BookingPage extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 25),
                   decoration: BoxDecoration(
                     color: const Color.fromRGBO(25, 29, 33, 1),
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   child: const Center(
                     child: Text(

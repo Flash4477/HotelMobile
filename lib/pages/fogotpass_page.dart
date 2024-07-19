@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_des/pages/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -93,7 +94,12 @@ class ForgotPasswordScreen extends StatelessWidget {
               SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () {
-                  // Add your onPressed code here!
+                                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>  LoginPage(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF333333), // Dark grey color

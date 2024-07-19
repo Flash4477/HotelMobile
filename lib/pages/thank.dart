@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_des/Homepage/HomePage.dart';
+import 'package:hotel_des/botton_nav_with_animated_icons.dart';
 
 void main() {
   runApp(MyApp());
@@ -63,7 +64,7 @@ class ThankPage extends StatelessWidget {
                   Navigator.of(context).pop();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
+                    MaterialPageRoute(builder: (context) => BottomNavWithAnimatedIcons()),
                   );
                 },
               child: Container(
@@ -73,7 +74,7 @@ class ThankPage extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 25),
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(25, 29, 33, 1),
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: const Center(
                   child: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_des/pages/thank.dart';
 import 'add_payment.dart';
 void main() {
   runApp(MyApp());
@@ -42,7 +43,7 @@ class PaymentPage extends StatelessWidget {
             Image.asset(
               'acess/backgroud.png', // Đảm bảo đường dẫn hình ảnh chính xác
               width: 377,
-              height: 100,
+              height: 226,
               fit: BoxFit.cover,
             ),
             SizedBox(height: 16),
@@ -144,6 +145,7 @@ class PaymentPage extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,
+                 foregroundColor: Colors.white,
                 minimumSize: Size(double.infinity, 50),
               ),
               onPressed: () {
@@ -161,9 +163,15 @@ class PaymentPage extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                 minimumSize: Size(double.infinity, 50),
                 side: BorderSide(color: Colors.black),
+                foregroundColor: const Color.fromARGB(255, 0, 0, 0),
               ),
               onPressed: () {
-                // Xử lý trả khi nhận phòng
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>  ThankPage(),
+                    ),
+                  );
                 Navigator.of(context).pop();
               },
               child: Text('TRẢ KHI NHẬN PHÒNG'),
